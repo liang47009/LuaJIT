@@ -1,0 +1,33 @@
+
+# Android/ARM, armeabi (ARMv5TE soft-float), Android 2.2+ (Froyo)
+NDK=/home/xiayunfeng/Android/android-ndk-r12b
+NDKABI=9
+NDKVER=$NDK/toolchains/arm-linux-androideabi-4.9
+NDKP=$NDKVER/prebuilt/linux-x86_64/bin/arm-linux-androideabi-
+NDKF="--sysroot $NDK/platforms/android-$NDKABI/arch-arm -DLUAJIT_ENABLE_LUA52COMPAT"
+make HOST_CC="gcc -m32" CROSS=$NDKP TARGET_FLAGS="$NDKF"
+
+# Android/ARM, armeabi-v7a (ARMv7 VFP), Android 4.0+ (ICS)
+NDK=/home/xiayunfeng/Android/android-ndk-r12b
+NDKABI=14
+NDKVER=$NDK/toolchains/arm-linux-androideabi-4.9
+NDKP=$NDKVER/prebuilt/linux-x86_64/bin/arm-linux-androideabi-
+NDKF="--sysroot $NDK/platforms/android-$NDKABI/arch-arm -DLUAJIT_ENABLE_LUA52COMPAT"
+NDKARCH="-march=armv7-a -mfloat-abi=softfp -Wl,--fix-cortex-a8"
+make HOST_CC="gcc -m32" CROSS=$NDKP TARGET_FLAGS="$NDKF $NDKARCH"
+
+# Android/MIPS, mips (MIPS32R1 hard-float), Android 4.0+ (ICS)
+NDK=/home/xiayunfeng/Android/android-ndk-r12b
+NDKABI=14
+NDKVER=$NDK/toolchains/mipsel-linux-android-4.9
+NDKP=$NDKVER/prebuilt/linux-x86_64/bin/mipsel-linux-android-
+NDKF="--sysroot $NDK/platforms/android-$NDKABI/arch-mips -DLUAJIT_ENABLE_LUA52COMPAT"
+make HOST_CC="gcc -m32" CROSS=$NDKP TARGET_FLAGS="$NDKF"
+
+# Android/x86, x86 (i686 SSE3), Android 4.0+ (ICS)
+NDK=/home/xiayunfeng/Android/android-ndk-r12b
+NDKABI=14
+NDKVER=$NDK/toolchains/x86-4.9
+NDKP=$NDKVER/prebuilt/linux-x86_64/bin/i686-linux-android-
+NDKF="--sysroot $NDK/platforms/android-$NDKABI/arch-x86 -DLUAJIT_ENABLE_LUA52COMPAT"
+make HOST_CC="gcc -m32" CROSS=$NDKP TARGET_FLAGS="$NDKF"
