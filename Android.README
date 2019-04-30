@@ -1,0 +1,40 @@
+
+# Android/ARM, armeabi (ARMv5TE soft-float), Android 2.2+ (Froyo)
+NDK=/f/android-ndk-r10e
+NDKABI=9
+NDKVER=$NDK/toolchains/arm-linux-androideabi-4.8
+NDKP=$NDKVER/prebuilt/windows-x86_64/bin/arm-linux-androideabi-
+NDKF="--sysroot $NDK/platforms/android-$NDKABI/arch-arm"
+make HOST_CC="gcc -m32" CROSS=$NDKP TARGET_FLAGS="$NDKF"
+
+NDK=F:\android-ndk-r10e
+NDKABI=9
+NDKVER=$NDK/toolchains/arm-linux-androideabi-4.8
+NDKP=$NDKVER/prebuilt/windows-x86_64/bin/arm-linux-androideabi-
+NDKF="--sysroot $NDK/platforms/android-$NDKABI/arch-arm"
+make HOST_CC="gcc -m32" CROSS=$NDKP TARGET_FLAGS="$NDKF"
+
+# Android/ARM, armeabi-v7a (ARMv7 VFP), Android 4.0+ (ICS)
+NDK=/opt/android/ndk
+NDKABI=14
+NDKVER=$NDK/toolchains/arm-linux-androideabi-4.6
+NDKP=$NDKVER/prebuilt/linux-x86/bin/arm-linux-androideabi-
+NDKF="--sysroot $NDK/platforms/android-$NDKABI/arch-arm"
+NDKARCH="-march=armv7-a -mfloat-abi=softfp -Wl,--fix-cortex-a8"
+make HOST_CC="gcc -m32" CROSS=$NDKP TARGET_FLAGS="$NDKF $NDKARCH"
+
+# Android/MIPS, mips (MIPS32R1 hard-float), Android 4.0+ (ICS)
+NDK=/opt/android/ndk
+NDKABI=14
+NDKVER=$NDK/toolchains/mipsel-linux-android-4.6
+NDKP=$NDKVER/prebuilt/linux-x86/bin/mipsel-linux-android-
+NDKF="--sysroot $NDK/platforms/android-$NDKABI/arch-mips"
+make HOST_CC="gcc -m32" CROSS=$NDKP TARGET_FLAGS="$NDKF"
+
+# Android/x86, x86 (i686 SSE3), Android 4.0+ (ICS)
+NDK=/opt/android/ndk
+NDKABI=14
+NDKVER=$NDK/toolchains/x86-4.6
+NDKP=$NDKVER/prebuilt/linux-x86/bin/i686-linux-android-
+NDKF="--sysroot $NDK/platforms/android-$NDKABI/arch-x86"
+make HOST_CC="gcc -m32" CROSS=$NDKP TARGET_FLAGS="$NDKF"
